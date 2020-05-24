@@ -51,20 +51,20 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Funciones
+        FUNCIONES
       </div>
 
             <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
+        <a class="nav-link" href="#">
+          <i class="fas fa-file-upload"></i>
           <span>Cargar Tareas</span></a>
       </li>
 
             <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <a class="nav-link" href="#">
+          <i class="fas fa-search"></i>
           <span>Busqueda</span></a>
       </li>
 
