@@ -65,7 +65,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-search"></i>
-          <span>Busqueda</span></a>
+          <span>Busquedas</span></a>
       </li>
 
       <!-- Sidebar Toggler (Sidebar) -->
