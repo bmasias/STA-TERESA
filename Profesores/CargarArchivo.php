@@ -77,7 +77,7 @@
 
                 <input type="submit" name="BTN_INGRESAR" value="REGISTRAR ARCHIVO" class="btn btn-primary btn-user btn-block">
                 <hr>
-                <a href="Archivo.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
+                <a href="Archivos.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
               </form>
             </div>
           </div>
