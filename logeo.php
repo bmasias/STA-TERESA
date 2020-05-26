@@ -38,8 +38,8 @@ if(($_POST["btn_entrar"]) && ($rut!="") && ($clave!=""))
 
 			//*****ACCESO USUARIO ADMINISTRADOR*****//
 			/*****ACCESO USUARIO ADMINISTRADOR******/
-			if($tipo_cargo=="SuperAdministracion" ){
-			header("location:Adm/inicio.php");
+			if($tipo_cargo=="Admin" ){
+			header("location:Admin/dashboard.php");
 			//***** ACCESO TARJADORES *****//
 			}else if($tipo_cargo=="Profesor"){ 
 			header("location:Profesores/dashboard.php");
