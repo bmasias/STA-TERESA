@@ -1,7 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,21 +26,21 @@
                             <h2 class="text-center text-light">Iniciar Sesion</h2>
                         </div>
                         <div class="card-body">
-                            <form class="needs-validation" action="Profesores/dashboard.php">
+                            <form class="needs-validation" method="POST" action="logeo.php">
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class='fas fa-user-graduate ml-2' style='font-size:23px'></i></span>
-                                        <input type="text" class="form-control" placeholder="Rut Usuario" id="rut_demo_5" name="rut_demo_5" required>
+                                        <input type="text" class="form-control" placeholder="Rut Usuario" id="rut_demo_5" name="rut" required>
                                     </div>         
                                 </div>
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class='fa fa-key ml-2' style='font-size:22px'></i></span>
-                                        <input type="password" class="form-control" placeholder="Clave Usuario" id="tbSifre" required>
+                                        <input type="password" name="txt_clave" class="form-control" placeholder="Clave Usuario" id="tbSifre" required>
                                     </div>   
                                 </div>
                                 <div class="form-group" style="text-align: center;">
-                                    <input type="submit" value="INICIAR SESION" class="btn  login_btn text-light" id="btnGiris">    
+                                    <input type="submit" name="btn_entrar" value="INICIAR SESION" class="btn login_btn text-light" id="btnGiris">    
                                 </div>
                             </form>
                         </div>
@@ -359,24 +356,6 @@
            });
        
        });</script>
-    <script>
-    (function(){
-        'use strict';
-        window.addEventListener('load',function(){
-            var forms = document.getElementsByClassName('needs-validation');
-            var validation = Array.prototype.filter.call(forms,function(form){
-                form.addEventListener('submit',function(event){
-                    if(form.checkValidity()===false)
-                    {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                },false)
-            });
-        },false);
-    })();
-    </script>
 
   <script src="js/jquery.Rut.js"></script>
   <script src="js/jquery.validate.js"></script>

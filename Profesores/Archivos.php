@@ -47,7 +47,7 @@ session_start();
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="dashboard.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -62,7 +62,7 @@ session_start();
 
             <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="Archivos.php">
+        <a class="nav-link" href="#">
           <i class="fas fa-file-upload"></i>
           <span>Cargar Tareas</span></a>
       </li>
@@ -274,9 +274,59 @@ session_start();
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">DASHBOARD DE PROFESORES</h1>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <div class="row">
+                <div class="col">
+                  <h6 class="m-0 font-weight-bold text-primary">Lista De Archivos</h6>
+                </div>
+                <div class="col">
+                  <a href="CargarArchivo.php" class="btn btn-primary">Agregar</a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <?php 
 
+                $select ="SELECT a.nombre_documento ,a.fecha_creado ,a.ruta ,c.nombre as 'cursos',asi.nom_asignatura as 'asignatura', u.nombre,u.apellido ,u.rut_usu
+                FROM archivos a , cursos c , asignaturas asi , usuarios u
+                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas)";
+                $resultado = mysqli_query($con,$select);
+                ?>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Curso</th>
+                      <th>Asignatura</th>
+                      <th>Fecha</th>
+                      <th>Archivo</th>
+                    </tr>
+                  </thead>
+                  <ttbody>
+                    <?php
+                      while($ver=mysqli_fetch_array($resultado,$base)){ 
+                      ?>
+                    <tr>
+                      <th><?php echo $ver["nombre_documento"]; ?></th>
+                      <th><?php echo $ver["cursos"]; ?></th>
+                      <th><?php echo $ver["asignatura"]; ?></th>
+                      <th><?php echo $ver["fecha_creado"]; ?></th>
+                      <th><a href="<?php echo $ver["ruta"]; ?>" target="_blanck">ARCHIVO</a></th>
+                    </tr>
+                    <?php 
+                    }
+                    ?>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -332,6 +382,13 @@ session_start();
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../js/demo/datatables-demo.js"></script>
+
 
 </body>
 
