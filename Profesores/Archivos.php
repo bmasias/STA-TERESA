@@ -315,7 +315,7 @@ session_start();
                       <th><?php echo $ver["cursos"]; ?></th>
                       <th><?php echo $ver["asignatura"]; ?></th>
                       <th><?php echo $ver["fecha_creado"]; ?></th>
-                      <th><a href="<?php echo $ver["ruta"]; ?>" target="_blanck">ARCHIVO</a></th>
+                      <th><a href="<?php echo $ver["ruta"]; ?>" target="_blanck"><img src="../img/archivo.png"></a></th>
                     </tr>
                     <?php 
                     }
