@@ -2,7 +2,7 @@
 include("../conexion.php");
 session_start();
   if ($_SESSION["estado"] == "LOGEADO"){ 
-
+    $rut_sesion= $_SESSION["rut_usu"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -293,7 +293,7 @@ session_start();
 
                 $select ="SELECT a.nombre_documento ,a.fecha_creado ,a.ruta ,c.nombre as 'cursos',asi.nom_asignatura as 'asignatura', u.nombre,u.apellido ,u.rut_usu
                 FROM archivos a , cursos c , asignaturas asi , usuarios u
-                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas)";
+                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas) AND u.rut_usu='$rut_sesion'";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
