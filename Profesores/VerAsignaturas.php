@@ -35,7 +35,7 @@ $rut_sesion= $_SESSION["rut_usu"];
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
         <div class="sidebar-brand-icon ">
           <i class="fas fa-chalkboard-teacher"></i>
         </div>
@@ -47,7 +47,7 @@ $rut_sesion= $_SESSION["rut_usu"];
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="dashboard.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -280,7 +280,7 @@ $rut_sesion= $_SESSION["rut_usu"];
             <div class="card-header py-3">
               <div class="row">
                 <div class="col">
-                  <h6 class="m-0 font-weight-bold text-primary">Pincha en una carpeta para acceder a tus asignaturas por curso</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Pincha en una carpeta para acceder a tus Archivos por asignatura</h6>
                 </div>
               </div>
               
@@ -289,17 +289,18 @@ $rut_sesion= $_SESSION["rut_usu"];
               <div class="table-responsive">
                 <?php 
 
+                $curso=$_GET['curso'];
                 $select ="SELECT  c.nombre as 'cursos',asi.nom_asignatura as 'asignatura' ,u.rut_usu as 'rut_u',u.estado
                 FROM archivos a , cursos c , asignaturas asi , usuarios u
                 WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas)
-                AND u.rut_usu='$rut_sesion' and u.estado='Activo'
-                GROUP BY c.nombre";
+                AND u.rut_usu='$rut_sesion' and u.estado='Activo' AND c.nombre='$curso'
+                GROUP BY asi.nom_asignatura";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>CURSO</th>
+                      <th>ASIGNATURA</th>
                       <th>VER</th>
                     </tr>
                   </thead>
@@ -308,9 +309,9 @@ $rut_sesion= $_SESSION["rut_usu"];
                       while($ver=mysqli_fetch_array($resultado,$base)){ 
                       ?>
                     <tr>
-                      <td><?php echo $ver["cursos"]; ?></td>
+                      <td><?php echo $ver["asignatura"]; ?></td>
 
-                      <td><a href="VerAsignaturas.php?curso=<?php echo $ver["cursos"];?>"><img src="../img/carpeta.png"></a></td>
+                      <td><a href="VerArchivos.php?asig=<?php echo $ver["asignatura"];?>&curso=<?php echo $ver["cursos"]?>"><img src="../img/carpeta.png"></a></td>
                     </tr>
                     <?php 
                     }
