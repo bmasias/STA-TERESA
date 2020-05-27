@@ -282,6 +282,9 @@ $rut_sesion= $_SESSION["rut_usu"];
                 <div class="col">
                   <h6 class="m-0 font-weight-bold text-primary">Ver Archivos Por Asignatura</h6>
                 </div>
+                 <div class="col-col 1">
+                  <a href="dashboard.php" class="btn btn-primary">Volver</a>
+                </div>
               </div>
               
             </div>
