@@ -44,7 +44,9 @@ if(($_POST["btn_entrar"]) && ($rut!="") && ($clave!=""))
 			}else if($tipo_cargo=="Profesor"){ 
 			header("location:Profesores/dashboard.php");
 
-			}else {//SI PRESIONO EL BOTON
+			}else if($tipo_cargo=="Apoderado"){
+			header("location:Apoderados/dashboard.php");
+			}else{//SI PRESIONO EL BOTON
 			//*****REDIRECCION A INDEX DE DATOS INCORRECTOS*****//
 			echo"<script type=\"text/javascript\">alert('Datos Incorrectos'); window.location='index.html';</script>"; 
 			}
