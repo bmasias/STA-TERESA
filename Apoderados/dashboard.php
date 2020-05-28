@@ -302,6 +302,7 @@ $rut_sesion= $_SESSION["rut_usu"];
                       ?>
                     <tr>
                       <td><?php echo $ver["curso"]; ?></td>
+
                       <td><a href="VerAsignaturas.php?curso=<?php echo $ver["cursos"];?>"><img src="../img/carpeta.png"></a></td>
                     </tr>
                     <?php 
