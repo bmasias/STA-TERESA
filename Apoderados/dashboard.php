@@ -273,10 +273,44 @@ $rut_sesion= $_SESSION["rut_usu"];
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+            <?php 
 
-          
-            <h2>DASHBOARD APODERADOS</h2>
+            $select="SELECT * FROM alumnos WHERE rut_usuario='$rut_sesion'";
+            $ejecutarSelect=mysqli_query($con,$select);
+            while($rows=mysqli_fetch_array($ejecutarSelect,$base)){ 
 
+            $rut_alumno= $rows['rut_alumno'];
+
+              $consulta="SELECT al.nombre, al.apellidos , c.nombre as 'curso' , u.rut_usu , ar.nombre_documento , a.nom_asignatura as 'asignatura'
+              FROM cursos c , alumnos al , usuarios u , archivos ar , asignaturas a
+
+              WHERE (al.id_curso=c.id_curso) and (al.rut_usuario = u.rut_usu) and (ar.id_curso=c.id_curso) AND (a.id_asignaturas=ar.id_asignaturas) and al.rut_alumno='$rut_alumno' ";
+              $ejecutar=mysqli_query($con,$consulta);
+             
+
+              ?>
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>CURSO</th>
+                      <th>VER</th>
+                    </tr>
+                  </thead>
+                  <ttbody>
+                    <?php
+                      while( $ver=mysqli_fetch_array($ejecutar,$base)){
+                      ?>
+                    <tr>
+                      <td><?php echo $ver["curso"]; ?></td>
+                      <td><a href="VerAsignaturas.php?curso=<?php echo $ver["cursos"];?>"><img src="../img/carpeta.png"></a></td>
+                    </tr>
+                    <?php 
+                    
+                      }//cierra segundo while
+                    }//
+                    ?>
+                  </tbody>
+                </table>
         </div>
         <!-- /.container-fluid -->
 
