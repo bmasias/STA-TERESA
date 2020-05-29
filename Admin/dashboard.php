@@ -73,7 +73,7 @@ session_start();
             <a class="collapse-item" href="Cursos/listaCursos.php">Cursos</a>
             <a class="collapse-item" href="#">Alumnos</a>
             <a class="collapse-item" href="Profesores/listaProfesores.php">Profesores</a>
-            <a class="collapse-item" href="#">Asignaturas</a>
+            <a class="collapse-item" href="Asignaturas/listaAsignaturas.php">Asignaturas</a>
           </div>
         </div>
       </li>
