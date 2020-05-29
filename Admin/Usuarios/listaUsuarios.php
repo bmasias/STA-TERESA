@@ -72,7 +72,7 @@ session_start();
             <a class="collapse-item" href="#">Usuarios</a>
             <a class="collapse-item" href="#">Cursos</a>
             <a class="collapse-item" href="#">Alumnos</a>
-            <a class="collapse-item" href="#">Profesores</a>
+            <a class="collapse-item" href="../Profesores/listaProfesores.php">Profesores</a>
             <a class="collapse-item" href="#">Asignaturas</a>
           </div>
         </div>
@@ -320,7 +320,7 @@ session_start();
 
                 $select ="SELECT u.rut_usu ,u.nombre ,u.apellido ,u.correo ,u.fono , tu.tipo as 'cargo'
                           FROM usuarios u , tipo_usuarios tu
-                          WHERE (u.id_tipo = tu.id_tipo) AND u.estado='Activo'";
+                          WHERE (u.id_tipo = tu.id_tipo) AND u.estado='Activo' and tu.tipo='Admin'";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

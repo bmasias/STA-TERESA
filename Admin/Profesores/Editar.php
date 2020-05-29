@@ -3,6 +3,13 @@
   session_start();
   error_reporting(0);
   if ($_SESSION["estado"] == "LOGEADO"){ 
+
+    $rut=$_GET['id'];
+    $sql = "SELECT u.rut_usu ,u.nombre ,u.apellido,u.clave ,u.correo,u.direccion ,u.fono , tu.tipo as 'cargo',u.id_tipo 
+                          FROM usuarios u , tipo_usuarios tu
+                          WHERE (u.id_tipo = tu.id_tipo) AND u.estado='Activo' AND rut_usu='$rut'";
+    $resultado=mysqli_query($con,$sql);
+    $rows=mysqli_fetch_array($resultado,$base);
 ?>
 
 <!DOCTYPE html>
@@ -27,60 +34,67 @@
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">CREAR NUEVO USUARIO</h1>
+                <h1 class="h4 text-gray-900 mb-4">ACTUALIZAR PROFESOR</h1>
               </div>
-              <form class="user" method="POST" action="Nuevo.php">
+              <form class="user" method="POST" action="Editar.php">
                 <div class="form-group row">
                   <div class="col-sm-4 mb-3 mb-sm-0">
-                   <input type="text" class="form-control form-control-user" id="rut_demo_5" name="rut" placeholder=" Rut" required="">
+                   <input type="text" class="form-control form-control-user" id="rut_demo_5" name="rut" placeholder=" Rut" required="" value="<?php echo $rows['rut_usu']; ?>" readonly>
                   </div>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Nombre Usuario" name="txt_nombre" required="">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Nombre Profesor" name="txt_nombre" required="" value="<?php echo $rows['nombre']; ?>">
                   </div>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Apellido Usuario" name="txt_apellido" required="">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Apellido Profesor" name="txt_apellido" required="" value="<?php echo $rows['apellido']; ?>">
                   </div>
                 </div>
                  <div class="form-group row">
-                  <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="email" class="form-control form-control-user"  placeholder=" Correo" name="txt_correo" required="">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="email" class="form-control form-control-user"  placeholder=" Correo" name="txt_correo" required="" value="<?php echo $rows['correo']; ?>">
                   </div>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user"  placeholder=" Fono" name="txt_fono" required="">
-                  </div>
-                  <div class="col-sm-4">
-                      <input type="password" class="form-control form-control-user"  placeholder="Password" name="txt_clave" required="" >
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user"  placeholder="Direccion" name="txt_direccion" required="" value="<?php echo $rows['direccion']; ?>">
                   </div>
                 </div>
-                <input type="submit" name="BTN_INGRESAR" value="REGISTRAR USUARIO" class="btn btn-primary btn-user btn-block">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user"  placeholder=" Fono" name="txt_fono" required="" value="<?php echo $rows['fono']; ?>">
+                  </div>
+                  <div class="col-sm-6">
+                      <input type="password" class="form-control form-control-user"  placeholder="Password" name="txt_clave" required="" value="<?php echo $rows['clave']; ?>">
+                  </div>
+                </div>
+                <input type="submit" name="BTN_ACTUALIZAR" value="ACTUALIZAR PROFESOR" class="btn btn-primary btn-user btn-block">
                 <hr>
-                <a href="listaUsuarios.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
+                <a href="listaProfesores.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
               </form>
             </div>
           </div>
               <?php 
 
-    if ($_POST["BTN_INGRESAR"]) {
+    if ($_POST["BTN_ACTUALIZAR"]) {
+
       $rut=$_POST["rut"];
       $nombre=$_POST["txt_nombre"];
       $apellido=$_POST["txt_apellido"];
       $clave=$_POST["txt_clave"];
       $correo=$_POST["txt_correo"];
+      $direccion=$_POST["txt_direccion"];
       $fono=$_POST["txt_fono"];
-      $cargo=$_POST["cbo_cargo"];
 
-        $insertar="INSERT INTO usuarios VALUES('$rut','$nombre','$apellido','$correo',null,'$fono','Activo','$clave','1','1')";
-        $resultadoInsert=mysqli_query($con,$insertar);
+      $update="UPDATE usuarios  SET nombre='$nombre' , apellido='$apellido' , correo='$correo' , direccion='$direccion',fono='$fono' , clave='$clave'  WHERE rut_usu='$rut'";
+      $resultadoupdate=mysqli_query($con,$update);
 
-        if ($resultadoInsert) {
+
+        if ($resultadoupdate) {
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-            <strong>USUARIO CREADO CORRECTAMENTE
+            <strong>PRFESOR ACTUALIZADO CORRECTAMENTE
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
               <span aria-hidden='true'>&times;</span>
             </button>
           </div>";
         }else{
-          echo "$insertar";
+          echo "$update";
         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
             <strong>ERROR DE SERVIDOR
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>

@@ -27,7 +27,7 @@
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">CREAR NUEVO USUARIO</h1>
+                <h1 class="h4 text-gray-900 mb-4">CREAR NUEVO PROFESOR</h1>
               </div>
               <form class="user" method="POST" action="Nuevo.php">
                 <div class="form-group row">
@@ -35,26 +35,31 @@
                    <input type="text" class="form-control form-control-user" id="rut_demo_5" name="rut" placeholder=" Rut" required="">
                   </div>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Nombre Usuario" name="txt_nombre" required="">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Nombre Profesor" name="txt_nombre" required="">
                   </div>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Apellido Usuario" name="txt_apellido" required="">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder=" Apellido Profesor" name="txt_apellido" required="">
                   </div>
                 </div>
                  <div class="form-group row">
-                  <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="email" class="form-control form-control-user"  placeholder=" Correo" name="txt_correo" required="">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user"  placeholder="Direccion" name="txt_direccion" required="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user"  placeholder=" Fono" name="txt_fono" required="">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                       <input type="password" class="form-control form-control-user"  placeholder="Password" name="txt_clave" required="" >
                   </div>
                 </div>
-                <input type="submit" name="BTN_INGRESAR" value="REGISTRAR USUARIO" class="btn btn-primary btn-user btn-block">
+                <input type="submit" name="BTN_INGRESAR" value="REGISTRAR PROFESOR" class="btn btn-primary btn-user btn-block">
                 <hr>
-                <a href="listaUsuarios.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
+                <a href="listaProfesores.php" class="btn btn-dark btn-user btn-block">VOLVER</a>
               </form>
             </div>
           </div>
@@ -66,15 +71,15 @@
       $apellido=$_POST["txt_apellido"];
       $clave=$_POST["txt_clave"];
       $correo=$_POST["txt_correo"];
+      $direccion=$_POST["txt_direccion"];
       $fono=$_POST["txt_fono"];
-      $cargo=$_POST["cbo_cargo"];
 
-        $insertar="INSERT INTO usuarios VALUES('$rut','$nombre','$apellido','$correo',null,'$fono','Activo','$clave','1','1')";
+        $insertar="INSERT INTO usuarios VALUES('$rut','$nombre','$apellido','$correo','$direccion','$fono','Activo','$clave','2','1')";
         $resultadoInsert=mysqli_query($con,$insertar);
 
         if ($resultadoInsert) {
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-            <strong>USUARIO CREADO CORRECTAMENTE
+            <strong>PROFESOR CREADO CORRECTAMENTE
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
               <span aria-hidden='true'>&times;</span>
             </button>
