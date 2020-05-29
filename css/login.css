@@ -1,131 +1,54 @@
- body {
-    background-color: white;
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
-
-#loginbox {
-    margin-top: 30px;
+.login-logo{
+    position: relative;
+    margin-left: -50%;
 }
-
-#loginbox > div:first-child {        
-    padding-bottom: 10px;    
-}
-
-.iconmelon {
-    display: block;
-    margin: auto;
-}
-
-#form > div {
-    margin-bottom: 25px;
-}
-
-#form > div:last-child {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.panel {    
-    background-color: #ffffff;
-}
-
-.panel-body {
-    padding-top: 30px;
-    background-color: rgba(255,255,255,.3);
-}
-
-#particles {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;                        
-    bottom: 0;
-    left: 0;
-    right: 0;
+.login-logo img{
     position: absolute;
-    z-index: -2;
+    width: 30%;
+    margin-top: 15%;
+    background: #D1E3E2;
+    border-radius: 4.5rem;
+    padding: 1%;
 }
-
-.iconmelon,
-.im {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  display: block;
-  fill: #4A575D;
+.login-form-1{
+    padding: 9%;
+    background:#E19C2B;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
-
-.iconmelon:after,
-.im:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
 }
-
-
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-.container{
-height: 30%;
-align-content: center;
+.login-form-2{
+    padding: 9%;
+    background: #C5C47D;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
-
-.card{
-height: 300px;
-margin-top: auto;
-margin-bottom: auto;
-width: 420px;
-background-color: rgba(0,0,0,0.5) !important;
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
 }
-
-.input-group-prepend span{
-width: 50px;
-background-color: teal;
-color: black;
-border:0 !important;
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
 }
-
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
 }
-
-.remember{
-color: white;
-}
-
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
-}
-
-.login_btn{
-color: black;
-background-color: teal;
-
-}
-
-.login_btn:hover{
-color: black;
-background-color: green;
-}
-
-.links{
-color: white;
-}
-.links:hover{
-    color: #CF1F46;
-    }
-
-.links a{
-margin-left: 4px;
-}
-.times:hover{
-    background-color: #CF1F46;
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
 }
