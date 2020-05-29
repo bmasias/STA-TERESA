@@ -71,9 +71,9 @@ error_reporting(0);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MANTENEDORES DE DATOS:</h6>
             <a class="collapse-item" href="../Usuarios/listaUsuarios.php">Usuarios</a>
-            <a class="collapse-item" href="#">Cursos</a>
+            <a class="collapse-item" href="../Cursos/listaCursos.php">Cursos</a>
             <a class="collapse-item" href="#">Alumnos</a>
-            <a class="collapse-item" href="#">Profesores</a>
+            <a class="collapse-item" href="../Profesores/listaProfesores.php">Profesores</a>
             <a class="collapse-item" href="#">Asignaturas</a>
           </div>
         </div>
@@ -128,7 +128,7 @@ error_reporting(0);
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por ..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -170,7 +170,7 @@ error_reporting(0);
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  Centro de Alertas
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -277,20 +277,20 @@ error_reporting(0);
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Perfil  
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Configuracion
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                 Registro de Actividades
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Cerrar Sesión
                 </a>
               </div>
             </li>
@@ -382,15 +382,15 @@ error_reporting(0);
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">¿Listo para Salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../../logout.php">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="../../logout.php">Cerrar Sesión</a>
         </div>
       </div>
     </div>
