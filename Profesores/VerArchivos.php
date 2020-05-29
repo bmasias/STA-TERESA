@@ -312,6 +312,14 @@ $rut_sesion= $_SESSION["rut_usu"];
                   </thead>
                   <ttbody>
                     <?php
+                if(mysqli_num_rows($resultado)==0){
+                    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                      <strong>NO HAY ARCHIVOS DISPONIBLES
+                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>";
+                  }else{
                       while($ver=mysqli_fetch_array($resultado,$base)){ 
                       ?>
                     <tr>
@@ -323,6 +331,7 @@ $rut_sesion= $_SESSION["rut_usu"];
                     </tr>
                     <?php 
                     }
+                  }
                     ?>
 
 
@@ -387,6 +396,12 @@ $rut_sesion= $_SESSION["rut_usu"];
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../js/demo/datatables-demo.js"></script>
 
 </body>
 
