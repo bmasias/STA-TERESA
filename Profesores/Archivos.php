@@ -291,9 +291,14 @@ session_start();
               <div class="table-responsive">
                 <?php 
 
-                $select ="SELECT a.nombre_documento ,a.fecha_creado ,a.ruta ,c.nombre as 'cursos',asi.nom_asignatura as 'asignatura', u.nombre,u.apellido ,u.rut_usu
-                FROM archivos a , cursos c , asignaturas asi , usuarios u
-                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas) AND u.rut_usu='$rut_sesion'";
+                $select ="SELECT a.nombre_documento,a.fecha_creado,cu.nombre as 'ncurso',asi.nom_asignatura as 'asignatura',a.ruta
+                        FROM archivos a , cabezeras c, cursos cu ,asignaturas asi ,usuarios u
+                        WHERE (a.id_cabezera=c.id_cabezeras)
+                          AND (c.id_curso=cu.id_curso)
+                            AND (c.id_asignatura=asi.id_asignaturas)
+                            AND (c.rut_usuario=u.rut_usu)
+                            AND u.estado='Activo'
+                            AND u.rut_usu='$rut_sesion'";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -312,7 +317,7 @@ session_start();
                       ?>
                     <tr>
                       <th><?php echo $ver["nombre_documento"]; ?></th>
-                      <th><?php echo $ver["cursos"]; ?></th>
+                      <th><?php echo $ver["ncurso"]; ?></th>
                       <th><?php echo $ver["asignatura"]; ?></th>
                       <th><?php echo $ver["fecha_creado"]; ?></th>
                       <th><a href="<?php echo $ver["ruta"]; ?>" target="_blanck"><img src="../img/archivo.png"></a></th>

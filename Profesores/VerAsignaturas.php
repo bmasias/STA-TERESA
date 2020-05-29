@@ -293,11 +293,9 @@ $rut_sesion= $_SESSION["rut_usu"];
                 <?php 
 
                 $curso=$_GET['curso'];
-                $select ="SELECT  c.nombre as 'cursos',asi.nom_asignatura as 'asignatura' ,u.rut_usu as 'rut_u',u.estado
-                FROM archivos a , cursos c , asignaturas asi , usuarios u
-                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas)
-                AND u.rut_usu='$rut_sesion' and u.estado='Activo' AND c.nombre='$curso'
-                GROUP BY asi.nom_asignatura";
+                $select ="SELECT cu.nombre , cu.id_curso as 'id_curso' , asi.nom_asignatura ,asi.id_asignaturas 
+                  FROM cabezeras c , cursos cu ,asignaturas asi
+                  WHERE (c.id_curso=cu.id_curso)AND(c.id_asignatura=asi.id_asignaturas) AND c.rut_usuario='$rut_sesion' AND c.id_curso='$curso'";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -312,9 +310,9 @@ $rut_sesion= $_SESSION["rut_usu"];
                       while($ver=mysqli_fetch_array($resultado,$base)){ 
                       ?>
                     <tr>
-                      <td><?php echo $ver["asignatura"]; ?></td>
+                      <td><?php echo $ver["nom_asignatura"]; ?></td>
 
-                      <td><a href="VerArchivos.php?asig=<?php echo $ver["asignatura"];?>&curso=<?php echo $ver["cursos"]?>"><img src="../img/carpeta.png"></a></td>
+                      <td><a href="VerArchivos.php?asig=<?php echo $ver["id_asignaturas"];?>&curso=<?php echo $ver["id_curso"]?>"><img src="../img/carpeta.png"></a></td>
                     </tr>
                     <?php 
                     }

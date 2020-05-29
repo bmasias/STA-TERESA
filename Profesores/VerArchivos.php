@@ -294,18 +294,18 @@ $rut_sesion= $_SESSION["rut_usu"];
 
                 $asignatura=$_GET['asig'];
                 $curso=$_GET['curso'];
-                $select ="SELECT a.nombre_documento ,a.fecha_creado ,a.ruta ,c.nombre as 'cursos',asi.nom_asignatura as 'asignatura', u.nombre,u.apellido ,u.rut_usu
-                FROM archivos a , cursos c , asignaturas asi , usuarios u
-                WHERE (a.rut_usuario = u.rut_usu) AND (a.id_curso = c.id_curso) AND (a.id_asignaturas = asi.id_asignaturas)  AND u.rut_usu='$rut_sesion'
-                AND c.nombre='$curso' AND asi.nom_asignatura='$asignatura' ";
+
+                $select ="SELECT a.nombre_documento,a.fecha_creado , cu.nombre as'cursos',asi.nom_asignatura as'asignatura',a.ruta
+                FROM archivos a , cabezeras c , cursos cu ,asignaturas asi
+                WHERE (a.id_cabezera=c.id_cabezeras) AND (c.id_curso=cu.id_curso) AND (c.id_asignatura=asi.id_asignaturas) AND c.id_curso='$curso' AND c.id_asignatura='$asignatura' AND c.rut_usuario='$rut_sesion'";
                 $resultado = mysqli_query($con,$select);
                 ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Nombre</th>
                       <th>Curso</th>
                       <th>Asignatura</th>
+                      <th>Nombre </th>
                       <th>Fecha</th>
                       <th>Archivo</th>
                     </tr>

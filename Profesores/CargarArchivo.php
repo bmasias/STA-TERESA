@@ -53,7 +53,9 @@
                     <select class="form-control" name="cbo_curso">
                       <option selected="">SELECCIONE CURSO</option>
                       <?php 
-                          $listarCURSO="SELECT * FROM cursos";
+                          $listarCURSO="SELECT cu.nombre,cu.id_curso
+                                        FROM cabezeras c , cursos cu
+                                        WHERE (c.id_curso=cu.id_curso) AND c.rut_usuario='$rut_sesion'";
                           $Listacursos=mysqli_query($con,$listarCURSO);
                           while($row=mysqli_fetch_array($Listacursos,$base)){
                             echo "<option value='$row[id_curso]'>$row[nombre]</option>";
@@ -65,7 +67,9 @@
                     <select class="form-control" name="cbo_asignatura">
                       <option selected="">SELECCIONE ASIGNATURA</option>
                       <?php 
-                          $listarCURSO="SELECT * FROM asignaturas where rut_usuario='$rut_sesion' ";
+                          $listarCURSO="SELECT asi.id_asignaturas ,asi.nom_asignatura
+                                        FROM cabezeras c , asignaturas asi
+                                        WHERE (c.id_asignatura=asi.id_asignaturas) AND c.rut_usuario='$rut_sesion'";
                           $ListaContrato=mysqli_query($con,$listarCURSO);
                           while($row=mysqli_fetch_array($ListaContrato,$base)){
                             echo "<option value='$row[id_asignaturas]'>$row[nom_asignatura]</option>";
@@ -92,15 +96,31 @@
           $destino="files/".$archivo;
           copy($ruta,$destino);
 
-          $insert="INSERT INTO archivos VALUES(null,'$nombre',CURDATE(),'$destino','$rut_sesion','$curso','$asignatura')";
+
+          $consultaIDCABEZARA="SELECT * FROM cabezeras WHERE rut_usuario='$rut_sesion' AND id_curso ='$curso' AND id_asignatura='$asignatura'";
+          $ejecutarConsulta=mysqli_query($con,$consultaIDCABEZARA);
+          $rows=mysqli_fetch_array($ejecutarConsulta,$base);
+
+          $idCABEZERA=$rows["id_cabezeras"];
+
+
+          $insert="INSERT INTO archivos VALUES(null,'$nombre',CURDATE(),'$destino','$idCABEZERA')";
           $ejecutar=mysqli_query($con,$insert);
 
           if ($ejecutar) {
-              echo "CORRECTO";
-              echo "$insert";
+          echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            <strong>ARCHIVO CARGADO CORRECTAMENTE
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
           }else{
-            echo "ERROR";
-            echo $insert;
+          echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            <strong>ERROR DE SERVIDOR
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
           }
     }//cierra click del boton
     ?>
