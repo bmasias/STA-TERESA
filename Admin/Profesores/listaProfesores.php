@@ -77,6 +77,10 @@ error_reporting(0);
             <a class="collapse-item" href="#">Asignaturas</a>
           </div>
         </div>
+       <li class="nav-item">
+        <a class="nav-link" href="../Asignaciones/listaAsignaciones.php">
+         <i class="fas fa-address-book"></i>
+          <span>ASIGNACIÓN</span></a>
       </li>
       <hr class="sidebar-divider">
 
